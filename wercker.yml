@@ -20,10 +20,16 @@ box: golang
 services:
   - id: mysql:5.5
     env:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_USER: testuser
-      MYSQL_PASSWORD: testuser
-      MYSQL_DATABASE: testdb
+      MYSQL_ROOT_PASSWORD: root_password55
+      MYSQL_USER: testuser55
+      MYSQL_PASSWORD: testuser55
+      MYSQL_DATABASE: testdb55
+  - id: mysql:5.6
+    env:
+      MYSQL_ROOT_PASSWORD: root_password56
+      MYSQL_USER: testuser56
+      MYSQL_PASSWORD: testuser56
+      MYSQL_DATABASE: testdb56
 build:
   # The steps that will be executed on build
   # Steps make up the actions in your pipeline
