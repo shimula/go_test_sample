@@ -50,7 +50,7 @@ build:
         name: glide install
         code: |
           go get github.com/Masterminds/glide
-          glide i
+          ${GOPATH}/bin/glide i
 
     - script:
         name: ls
