@@ -50,7 +50,11 @@ build:
         name: glide install
         code: |
           go get github.com/Masterminds/glide
-          glide install
+          glide i
+
+    - script:
+        name: ls
+        code: ls -la
 
     # Build the project
     - script:
