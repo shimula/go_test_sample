@@ -43,18 +43,14 @@ build:
     - setup-go-workspace
 
     - script:
-        name: glide
-        code: which glide
-
-    - script:
         name: env
         code: env
 
-    # Gets the dependencies
     - script:
-        name: go get
+        name: glide install
         code: |
-          go get
+          go get github.com/Masterminds/glide
+          glide install
 
     # Build the project
     - script:
