@@ -16,6 +16,14 @@ box: golang
 
     # - mongo
     # http://devcenter.wercker.com/docs/services/mongodb.html
+
+services:
+  - id: mysql:5.5
+    env:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: testuser
+      MYSQL_DATABASE: testdb
 build:
   # The steps that will be executed on build
   # Steps make up the actions in your pipeline
@@ -27,10 +35,8 @@ build:
     - setup-go-workspace
 
     - script:
-        name: docker mysql
-        code: |
-          docker run -e "MYSQL_ROOT_PASSWORD=hoge" -p 3306:3306 mysql:5.5
-          dockder ps
+        name: env
+        code: env
 
     # Gets the dependencies
     - script:
