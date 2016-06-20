@@ -43,6 +43,10 @@ build:
     - setup-go-workspace
 
     - script:
+        name: glide
+        code: which glide
+
+    - script:
         name: env
         code: env
 
