@@ -21,17 +21,17 @@ services:
   - id: mysql:5.5
     name: mysql5.5
     env:
-      MYSQL_ROOT_PASSWORD: root_password55
-      MYSQL_USER: testuser55
-      MYSQL_PASSWORD: testuser55
-      MYSQL_DATABASE: testdb55
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: test
   - id: mysql:5.6
     name: mysql5.6
     env:
-      MYSQL_ROOT_PASSWORD: root_password56
-      MYSQL_USER: testuser56
-      MYSQL_PASSWORD: testuser56
-      MYSQL_DATABASE: testdb56
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: test
 build:
   # The steps that will be executed on build
   # Steps make up the actions in your pipeline
@@ -41,6 +41,8 @@ build:
     # Sets the go workspace and places you package
     # at the right place in the workspace tree
     - setup-go-workspace
+
+    - script: which mysql
 
     - script:
         name: env
