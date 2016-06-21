@@ -54,6 +54,7 @@ build:
         code: |
           go get github.com/Masterminds/glide
           ${GOPATH}/bin/glide i
+          ${GOPATH}/bin/glide up
 
     - script:
         name: ls
