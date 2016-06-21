@@ -110,3 +110,12 @@ Temporary Items
 .apdisk
 
 /vendor/
+
+
+# wercker cli
+_steps
+_builds
+_cache
+_projects
+Documentation
+.wercker
