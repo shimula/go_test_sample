@@ -42,7 +42,8 @@ build:
     # at the right place in the workspace tree
     - setup-go-workspace
 
-    - script: which mysql
+    - script:
+        code: which mysql
 
     - script:
         name: env
