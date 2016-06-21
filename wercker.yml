@@ -43,7 +43,7 @@ build:
     - setup-go-workspace
 
     - install-packages:
-        packages: mysql
+        packages: mysql-client
 
     - script:
         name: env
