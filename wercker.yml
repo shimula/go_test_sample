@@ -71,7 +71,7 @@ build:
         name: glide install
         code: |
           go get github.com/Masterminds/glide
-          ${GOPATH}/bin/glide i
+          glide i
 
     # Build the project
     - script:
