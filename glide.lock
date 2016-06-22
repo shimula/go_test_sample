@@ -1,5 +1,5 @@
-hash: d00c7ff8bf0ec0bb16a22dbc189d9293de7f0a6738d1294ea4168c2f8c3086b5
-updated: 2016-06-22T16:54:09.850905416+09:00
+hash: 9c3a21e6746d7a7d0bf7a63ca9e2034b2f267365b7c27f369e12824d5a481ffc
+updated: 2016-06-22T18:27:24.352913816+09:00
 imports:
 - name: github.com/go-sql-driver/mysql
   version: 3654d25ec346ee8ce71a68431025458d52a38ac0
@@ -19,7 +19,7 @@ imports:
 - name: github.com/mattn/go-isatty
   version: 56b76bdf51f7708750eac80fa38b952bb9f32639
 - name: github.com/shimula/go_test_sample
-  version: 69d7c6d858104139299c26930b97ced7f7cd0a60
+  version: 1eab6bc37839166c6f0a5aa4ef0d0f38490d6882
   subpackages:
   - handler
 - name: github.com/valyala/fasttemplate
