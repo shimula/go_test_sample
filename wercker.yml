@@ -43,7 +43,7 @@ build:
 
     - script:
         name: set go path
-        code: export GOPATH=$GOPATH:$WERCKER_SOURCE_DIR
+        code: export WERCKER_SOURCE_DIR=$GOPATH/go_test_sample
 
     - wercker/setup-go-workspace:
         package-dir: github.com/wercker/setup-go-workspace
