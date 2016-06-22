@@ -1,9 +1,6 @@
-package: go_sample
+package: go_test_sample
 import:
 - package: github.com/go-sql-driver/mysql
 - package: github.com/labstack/echo
   subpackages:
   - engine/standard
-- package: github.com/shimula/go_test_sample
-  subpackages:
-  - handler
