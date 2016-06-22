@@ -77,10 +77,6 @@ build:
     - script:
         name: go build
         code: |
-          pwd
-          echo $GOPATH
-          ls -la $GOPATH/src
-          ls -la /go/src/github.com/wercker/setup-go-workspace/
           go build
 
     # Test the project
