@@ -40,6 +40,11 @@ build:
   steps:
     # Sets the go workspace and places you package
     # at the right place in the workspace tree
+
+    - script:
+        name: set go path
+        code: export GOPATH=$GOPATH:$WERCKER_SOURCE_DIR
+
     - wercker/setup-go-workspace:
         package-dir: github.com/wercker/setup-go-workspace
 
