@@ -43,37 +43,28 @@ build:
     - wercker/setup-go-workspace:
         package-dir: github.com/wercker/setup-go-workspace
 
-   # - install-packages:
-   #     packages: mysql-client
-#
-   # - script:
-   #     name: set mysql ip address
-   #     code: env
-#
-   # - script:
-   #     name: hoge
-   #     code: |
-   #       echo "${MYSQL55_ENV_MYSQL_ROOT_PASSWORD}"
-#
-   # - script:
-   #     name: load initial data
-   #     code: |
-   #       mysql -u${MYSQL55_ENV_MYSQL_USER} -p${MYSQL55_ENV_MYSQL_PASSWORD} -P${MYSQL55_PORT_3306_TCP_PORT} -h${MYSQL55_PORT_3306_TCP_ADDR} < test_data/init.sql
-   #       mysql -u${MYSQL56_ENV_MYSQL_USER} -p${MYSQL56_ENV_MYSQL_PASSWORD} -P${MYSQL56_PORT_3306_TCP_PORT} -h${MYSQL56_PORT_3306_TCP_ADDR} < test_data/init.sql
+    - script:
+        name: set mysql ip address
+        code: env
 
-   # - script:
-   #     name: test
-   #     code: |
-   #        mysql -u${MYSQL55_ENV_MYSQL_USER} -p${MYSQL55_ENV_MYSQL_PASSWORD} -P${MYSQL55_PORT_3306_TCP_PORT} -h${MYSQL55_PORT_3306_TCP_ADDR} -e "select * from test.users"
-   #        mysql -u${MYSQL56_ENV_MYSQL_USER} -p${MYSQL56_ENV_MYSQL_PASSWORD} -P${MYSQL56_PORT_3306_TCP_PORT} -h${MYSQL56_PORT_3306_TCP_ADDR} -e "select * from test.users"
+
+    - script:
+        name: load initial data
+        code: |
+          mysql -u${MYSQL55_ENV_MYSQL_USER} -p${MYSQL55_ENV_MYSQL_PASSWORD} -P${MYSQL55_PORT_3306_TCP_PORT} -h${MYSQL55_PORT_3306_TCP_ADDR} < test_data/init.sql
+          mysql -u${MYSQL56_ENV_MYSQL_USER} -p${MYSQL56_ENV_MYSQL_PASSWORD} -P${MYSQL56_PORT_3306_TCP_PORT} -h${MYSQL56_PORT_3306_TCP_ADDR} < test_data/init.sql
+
+    - script:
+        name: test
+        code: |
+           mysql -u${MYSQL55_ENV_MYSQL_USER} -p${MYSQL55_ENV_MYSQL_PASSWORD} -P${MYSQL55_PORT_3306_TCP_PORT} -h${MYSQL55_PORT_3306_TCP_ADDR} -e "select * from test.users"
+           mysql -u${MYSQL56_ENV_MYSQL_USER} -p${MYSQL56_ENV_MYSQL_PASSWORD} -P${MYSQL56_PORT_3306_TCP_PORT} -h${MYSQL56_PORT_3306_TCP_ADDR} -e "select * from test.users"
 
     - script:
         name: glide install
         code: |
           go get github.com/Masterminds/glide
           ${GOPATH}/bin/glide i
-          ${GOPATH}/bin/glide up
-
 
     # Build the project
     - script:
@@ -81,24 +72,25 @@ build:
         code: |
           pwd
           echo $GOPATH
-          ls -la
-          go build ./...
+          ls -la $GOPATH/src
+          ls -la /go/src/github.com/wercker/setup-go-workspace/
+          go build
 
     # Test the project
-   #- script:
-   #    name: go test for mysql 5.5
-   #    code: |
-   #      MYSQL_USER=${MYSQL55_ENV_MYSQL_USER} \
-   #      MYSQL_PASSWORD=${MYSQL55_ENV_MYSQL_PASSWORD} \
-   #      MYSQL_HOST=${MYSQL55_PORT_3306_TCP_ADDR} \
-   #      MYSQL_PORT=${MYSQL55_PORT_3306_TCP_PORT} \
-   #      go test .
+   - script:
+       name: go test for mysql 5.5
+       code: |
+         MYSQL_USER=${MYSQL55_ENV_MYSQL_USER} \
+         MYSQL_PASSWORD=${MYSQL55_ENV_MYSQL_PASSWORD} \
+         MYSQL_HOST=${MYSQL55_PORT_3306_TCP_ADDR} \
+         MYSQL_PORT=${MYSQL55_PORT_3306_TCP_PORT} \
+         go test .
 
-   #- script:
-   #    name: go test for mysql 5.6
-   #    code: |
-   #      MYSQL_USER=${MYSQL56_ENV_MYSQL_USER} \
-   #      MYSQL_PASSWORD=${MYSQL56_ENV_MYSQL_PASSWORD} \
-   #      MYSQL_HOST=${MYSQL56_PORT_3306_TCP_ADDR} \
-   #      MYSQL_PORT=${MYSQL56_PORT_3306_TCP_PORT} \
-   #      go test .
+   - script:
+       name: go test for mysql 5.6
+       code: |
+         MYSQL_USER=${MYSQL56_ENV_MYSQL_USER} \
+         MYSQL_PASSWORD=${MYSQL56_ENV_MYSQL_PASSWORD} \
+         MYSQL_HOST=${MYSQL56_PORT_3306_TCP_ADDR} \
+         MYSQL_PORT=${MYSQL56_PORT_3306_TCP_PORT} \
+         go test .
