@@ -17,22 +17,25 @@ box: golang
     # - mongo
     # http://devcenter.wercker.com/docs/services/mongodb.html
 
-services:
- - id: mysql:5.5
-   name: mysql55
-   env:
-     MYSQL_ROOT_PASSWORD: rootpassword
-     MYSQL_USER: testuser
-     MYSQL_PASSWORD: password
-     MYSQL_DATABASE: test
- - id: mysql:5.6
-   name: mysql56
-   env:
-     MYSQL_ROOT_PASSWORD: rootpassword
-     MYSQL_USER: testuser
-     MYSQL_PASSWORD: password
-     MYSQL_DATABASE: test
+
 build:
+
+  services:
+   - id: mysql:5.5
+     name: mysql55
+     env:
+       MYSQL_ROOT_PASSWORD: rootpassword
+       MYSQL_USER: testuser
+       MYSQL_PASSWORD: password
+       MYSQL_DATABASE: test
+   - id: mysql:5.6
+     name: mysql56
+     env:
+       MYSQL_ROOT_PASSWORD: rootpassword
+       MYSQL_USER: testuser
+       MYSQL_PASSWORD: password
+       MYSQL_DATABASE: test
+
   # The steps that will be executed on build
   # Steps make up the actions in your pipeline
   # Read more about steps on our dev center:
@@ -91,3 +94,29 @@ build:
          MYSQL_HOST=${MYSQL56_PORT_3306_TCP_ADDR} \
          MYSQL_PORT=${MYSQL56_PORT_3306_TCP_PORT} \
          go test $(glide nv)
+
+deploy:
+  steps:
+
+    - install-packages:
+        packages: file
+
+    - script:
+       name: set version
+       code: export APP_VERSION=v$WERCKER_GIT_COMMIT
+
+    - script:
+        name: print env
+        code: env
+
+    - github-create-release:
+        token: $GITHUB_TOKEN
+        tag: $APP_VERSION
+        owner: shimula
+        repo: go_test_sample
+
+    - github-upload-asset:
+        token: $GITHUB_TOKEN
+        file: go_test_sample
+        owner: shimula
+        repo: go_test_sample
