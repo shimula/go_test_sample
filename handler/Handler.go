@@ -57,7 +57,7 @@ func GetUsers(c echo.Context) error {
 			return c.String(http.StatusInternalServerError, "error")
 		}
 
-		return c.String(http.StatusOK, id)
+		return c.String(http.StatusNotFound, id)
 	}
 	return c.String(http.StatusNotFound, "user not found")
 }

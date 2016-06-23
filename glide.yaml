@@ -7,3 +7,6 @@ import:
 - package: github.com/shimula/go_test_sample
   subpackages:
   - handler
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert
