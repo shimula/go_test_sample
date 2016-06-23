@@ -4,3 +4,6 @@ import:
 - package: github.com/labstack/echo
   subpackages:
   - engine/standard
+- package: github.com/shimula/go_test_sample
+  subpackages:
+  - handler

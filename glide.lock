@@ -1,10 +1,10 @@
-hash: 1dc59d73553e987b228f08b347f666566f8b8da61f4038cdd9b210ec693d4c77
-updated: 2016-06-22T19:40:20.484466611+09:00
+hash: 29f07a1f83cb8ceddf518a72e09a35d4dd3e4b54b14c29437bd691cc1376e834
+updated: 2016-06-23T10:39:47.651184617+09:00
 imports:
 - name: github.com/go-sql-driver/mysql
   version: 3654d25ec346ee8ce71a68431025458d52a38ac0
 - name: github.com/labstack/echo
-  version: fbcdf70c52c155ae9aa58e72ee0532fa2f1cad2e
+  version: fa80ead5e2739b8e63076081e275d80c96cd7ad7
   subpackages:
   - engine/standard
   - engine
@@ -18,10 +18,14 @@ imports:
   version: 9056b7a9f2d1f2d96498d6d146acd1f9d5ed3d59
 - name: github.com/mattn/go-isatty
   version: 56b76bdf51f7708750eac80fa38b952bb9f32639
+- name: github.com/shimula/go_test_sample
+  version: b5497e77819c248674125d6d10145a5254f2ccc2
+  subpackages:
+  - handler
 - name: github.com/valyala/fasttemplate
   version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: golang.org/x/net
-  version: 8bf2b39827dbadfd566c4fae7a8790d12be8b23c
+  version: bc3663df0ac92f928d419e31e0d2af22e683a5a2
   subpackages:
   - context
 - name: golang.org/x/sys

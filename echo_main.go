@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	"go_test_sample/handler"
+	"github.com/shimula/go_test_sample/handler"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 )
