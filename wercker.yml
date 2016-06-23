@@ -48,7 +48,7 @@ build:
         packages: mysql-client
 
     - script:
-        name: env
+        name: print env
         code: env
 
     - script:
@@ -56,12 +56,6 @@ build:
         code: |
           mysql -u${MYSQL55_ENV_MYSQL_USER} -p${MYSQL55_ENV_MYSQL_PASSWORD} -P${MYSQL55_PORT_3306_TCP_PORT} -h${MYSQL55_PORT_3306_TCP_ADDR} < test_data/init.sql
           mysql -u${MYSQL56_ENV_MYSQL_USER} -p${MYSQL56_ENV_MYSQL_PASSWORD} -P${MYSQL56_PORT_3306_TCP_PORT} -h${MYSQL56_PORT_3306_TCP_ADDR} < test_data/init.sql
-
-    - script:
-        name: test
-        code: |
-           mysql -u${MYSQL55_ENV_MYSQL_USER} -p${MYSQL55_ENV_MYSQL_PASSWORD} -P${MYSQL55_PORT_3306_TCP_PORT} -h${MYSQL55_PORT_3306_TCP_ADDR} -e "select * from test.users"
-           mysql -u${MYSQL56_ENV_MYSQL_USER} -p${MYSQL56_ENV_MYSQL_PASSWORD} -P${MYSQL56_PORT_3306_TCP_PORT} -h${MYSQL56_PORT_3306_TCP_ADDR} -e "select * from test.users"
 
     - script:
         name: glide install
@@ -83,7 +77,7 @@ build:
          MYSQL_PASSWORD=${MYSQL55_ENV_MYSQL_PASSWORD} \
          MYSQL_HOST=${MYSQL55_PORT_3306_TCP_ADDR} \
          MYSQL_PORT=${MYSQL55_PORT_3306_TCP_PORT} \
-         go test `go list ./...|grep -v /vendor/`
+         go test $(glide nv)
 
     - script:
        name: go test for mysql 5.6
@@ -92,4 +86,4 @@ build:
          MYSQL_PASSWORD=${MYSQL56_ENV_MYSQL_PASSWORD} \
          MYSQL_HOST=${MYSQL56_PORT_3306_TCP_ADDR} \
          MYSQL_PORT=${MYSQL56_PORT_3306_TCP_PORT} \
-         go test `go list ./...|grep -v /vendor/`
+         go test $(glide nv)
