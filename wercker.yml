@@ -107,7 +107,11 @@ deploy:
 
     - script:
         name: print env
-        code: env
+        code: |
+          env
+          pwd
+          ls -la
+
 
     - github-create-release:
         token: $GITHUB_TOKEN
