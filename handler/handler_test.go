@@ -18,12 +18,12 @@ func TestGetUsersOK(t *testing.T) {
 	c := e.NewContext(standard.NewRequest(req, e.Logger()), standard.NewResponse(rec, e.Logger()))
 	c.SetPath("/users/:id")
 	c.SetParamNames("id")
-	c.SetParamValues("b")
+	c.SetParamValues("a")
 
 	// Assertions
 	if assert.NoError(t, GetUsers(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.Equal(t, "b", rec.Body.String())
+		assert.Equal(t, "a", rec.Body.String())
 	}
 }
 
