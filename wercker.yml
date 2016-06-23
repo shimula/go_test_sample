@@ -44,6 +44,10 @@ build:
     - wercker/setup-go-workspace:
         package-dir: github.com/wercker/setup-go-workspace
 
+    - script:
+        name: git branch
+        code: git branch
+
     - install-packages:
         packages: mysql-client
 
