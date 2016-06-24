@@ -47,11 +47,7 @@ build:
     - wercker/setup-go-workspace:
         package-dir: github.com/shimula/go_test_sample
 
-    - script:
-        name: glide
-        code: |
-          add-apt-repository ppa:masterminds/glide && apt-get update
-
+s
     - install-packages:
         packages: mysql-client glide
 
