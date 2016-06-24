@@ -78,6 +78,11 @@ build:
         code: |
           go build -o $WERCKER_OUTPUT_DIR/echo_main2 echo_main2.go
 
+    - script:
+        name: copy version file
+        code: |
+          cp version $WERCKER_OUTPUT_DIR/
+
     # Test the project
     - script:
        name: go test for mysql 5.5
@@ -104,8 +109,8 @@ deploy:
         packages: file
 
     - script:
-       name: set version
-       code: export APP_VERSION=$(cat version)
+       name: set version name
+       code: export APP_VERSION=$(cat $WERCKER_SOURCE_DIR/version)
 
     - github-create-release:
         token: $GITHUB_TOKEN
