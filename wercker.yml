@@ -101,7 +101,7 @@ deploy:
   steps:
 
     - install-packages:
-        packages: file
+        packages: file tree
 
     - script:
        name: set version
