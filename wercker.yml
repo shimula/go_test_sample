@@ -113,7 +113,7 @@ deploy:
           env
           pwd
           ls -la $WERCKER_OUTPUT_DIR
-          ls -la $WERCKER_CACHE_DIR
+          tree $WERCKER_CACHE_DIR
 
     - github-create-release:
         token: $GITHUB_TOKEN
