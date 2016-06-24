@@ -70,13 +70,13 @@ build:
     - script:
         name: go build 1
         code: |
-          go build echo_main.go
+          go build -o $WERCKER_OUTPUT_DIR/echo_main1 echo_main.go
 
     # Build the project
     - script:
         name: go build 2
         code: |
-          go build echo_main2.go
+          go build -o $WERCKER_OUTPUT_DIR/echo_main2 echo_main2.go
 
     # Test the project
     - script:
