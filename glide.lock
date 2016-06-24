@@ -1,11 +1,12 @@
-hash: 5f7637dea1bb5b96d5d8260e1858079f894ccce8f62474a09ac892d55c669a99
-updated: 2016-06-24T13:57:59.004289087+09:00
+hash: a56d7b75d6d465d5fb82548d8b07d68463444d3ca36e19a5c0de8a3c106ab389
+updated: 2016-06-24T14:22:33.755555865+09:00
 imports:
 - name: github.com/go-sql-driver/mysql
   version: 3654d25ec346ee8ce71a68431025458d52a38ac0
 - name: github.com/labstack/echo
   version: 08f714750872c45b6f3893a9803dc52822971ae3
   subpackages:
+  - engine/standard
   - engine
   - log
 - name: github.com/labstack/gommon
@@ -17,6 +18,10 @@ imports:
   version: 9056b7a9f2d1f2d96498d6d146acd1f9d5ed3d59
 - name: github.com/mattn/go-isatty
   version: 56b76bdf51f7708750eac80fa38b952bb9f32639
+- name: github.com/stretchr/testify
+  version: d77da356e56a7428ad25149ca77381849a6a5232
+  subpackages:
+  - assert
 - name: github.com/valyala/fasttemplate
   version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: golang.org/x/net
