@@ -48,7 +48,7 @@ build:
         package-dir: github.com/shimula/go_test_sample
 
     - install-packages:
-        packages: mysql-client glide
+        packages: mysql-client
 
     - script:
         name: print env
