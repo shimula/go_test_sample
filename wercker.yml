@@ -112,8 +112,9 @@ deploy:
         code: |
           env
           pwd
-          ls -la $WERCKER_OUTPUT_DIR
+          tree $WERCKER_OUTPUT_DIR
           tree $WERCKER_CACHE_DIR
+          tree $WERCKER_SOURCE_DIR
 
     - github-create-release:
         token: $GITHUB_TOKEN
