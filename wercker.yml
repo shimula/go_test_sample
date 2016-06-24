@@ -45,14 +45,15 @@ build:
     # at the right place in the workspace tree
 
     - wercker/setup-go-workspace:
-        package-dir: github.com/wercker/setup-go-workspace
+        package-dir: github.com/shimula/go_test_sample
 
     - script:
-        name: git branch
-        code: git branch
+        name: glide
+        code: |
+          add-apt-repository ppa:masterminds/glide && apt-get update
 
     - install-packages:
-        packages: mysql-client
+        packages: mysql-client glide
 
     - script:
         name: print env
@@ -69,7 +70,6 @@ build:
         code: |
           go get github.com/Masterminds/glide
           glide i
-          glide up
 
     # Build the project
     - script:
@@ -91,7 +91,7 @@ build:
          MYSQL_PASSWORD=${MYSQL55_ENV_MYSQL_PASSWORD} \
          MYSQL_HOST=${MYSQL55_PORT_3306_TCP_ADDR} \
          MYSQL_PORT=${MYSQL55_PORT_3306_TCP_PORT} \
-         go test $(glide nv)
+         go test ./handler
 
     - script:
        name: go test for mysql 5.6
@@ -100,7 +100,7 @@ build:
          MYSQL_PASSWORD=${MYSQL56_ENV_MYSQL_PASSWORD} \
          MYSQL_HOST=${MYSQL56_PORT_3306_TCP_ADDR} \
          MYSQL_PORT=${MYSQL56_PORT_3306_TCP_PORT} \
-         go test $(glide nv)
+         go test ./handler
 
 deploy:
   steps:
@@ -117,7 +117,8 @@ deploy:
         code: |
           env
           pwd
-          ls -la
+          ls -la $WERCKER_OUTPUT_DIR
+          ls -la $WERCKER_CACHE_DIR
 
     - github-create-release:
         token: $GITHUB_TOKEN
