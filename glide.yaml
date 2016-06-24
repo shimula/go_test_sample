@@ -2,3 +2,4 @@ package: github.com/shimula/go_test_sample
 import:
 - package: github.com/go-sql-driver/mysql
 - package: github.com/labstack/echo
+- package: github.com/stretchr/testify/assert
