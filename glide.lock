@@ -1,10 +1,10 @@
-hash: 690424b7944c0b506e17015c55d1040386f87435a37203f3b779c6f7ee354170
-updated: 2016-06-23T11:17:00.240599193+09:00
+hash: 77bc09957c81377968ec4285f026d2ab0e87c4e1165ba8331b7bf70aa51020c3
+updated: 2016-06-24T13:34:41.844442547+09:00
 imports:
 - name: github.com/go-sql-driver/mysql
   version: 3654d25ec346ee8ce71a68431025458d52a38ac0
 - name: github.com/labstack/echo
-  version: fa80ead5e2739b8e63076081e275d80c96cd7ad7
+  version: fbcdf70c52c155ae9aa58e72ee0532fa2f1cad2e
   subpackages:
   - engine/standard
   - engine
@@ -19,7 +19,7 @@ imports:
 - name: github.com/mattn/go-isatty
   version: 56b76bdf51f7708750eac80fa38b952bb9f32639
 - name: github.com/shimula/go_test_sample
-  version: 1ef7d53e78ea53212d1c4d722ab6bddf3e9df40c
+  version: da62d32bfcb865645d26b4ccef2a02f5b99166e4
   subpackages:
   - handler
 - name: github.com/stretchr/testify
