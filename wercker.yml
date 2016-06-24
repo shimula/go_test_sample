@@ -101,20 +101,11 @@ deploy:
   steps:
 
     - install-packages:
-        packages: file tree
+        packages: file
 
     - script:
        name: set version
        code: export APP_VERSION=$(cat version)
-
-    - script:
-        name: print env
-        code: |
-          env
-          pwd
-          tree $WERCKER_OUTPUT_DIR
-          tree $WERCKER_CACHE_DIR
-          tree $WERCKER_SOURCE_DIR
 
     - github-create-release:
         token: $GITHUB_TOKEN
@@ -124,6 +115,12 @@ deploy:
 
     - github-upload-asset:
         token: $GITHUB_TOKEN
-        file: go_test_sample
+        file: $WERCKER_SOURCE_DIR/echo_main1
+        owner: shimula
+        repo: go_test_sample
+
+    - github-upload-asset:
+        token: $GITHUB_TOKEN
+        file: $WERCKER_SOURCE_DIR/echo_main2
         owner: shimula
         repo: go_test_sample
