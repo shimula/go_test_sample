@@ -109,7 +109,7 @@ deploy:
         packages: file
 
     - script:
-       name: set version name
+       name: set version name1
        code: export APP_VERSION=$(cat $WERCKER_SOURCE_DIR/version)
 
     - github-create-release:
