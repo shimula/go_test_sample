@@ -5,10 +5,6 @@ import (
 	"net/http"
 )
 
-type H struct {
-
-}
-
-func (h *H) Greeting(c echo.Context) error {
+func Greeting(c echo.Context) error {
 	return c.String(http.StatusOK, "Hello")
 }

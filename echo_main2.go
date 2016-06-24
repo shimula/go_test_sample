@@ -8,6 +8,6 @@ import (
 
 func main() {
 	e := echo.New()
-	e.GET("/", H)
+	e.GET("/", handler.Greeting)
 	e.Run(standard.New(":8888"))
 }
